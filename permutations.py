@@ -39,12 +39,12 @@ def permutationsHelper(array, currentPermutation, permutations):
 				- 2nd call, i = 1: perm [1,3], newArray = [2] 
 				.....
 			'''
-def getPermutations2(array):
+def getPermutations_2(array):
     permutations = []
-    permutationsHelper(0, array, permutations)
+    permutationsHelper2(0, array, permutations)
     return permutations
 
-def permutationsHelper2(i, array, permutations):
+def permutationsHelper_2(i, array, permutations):
     # Check if we are at the end of our array
     # i is the index
     if i == len(array) -1:
