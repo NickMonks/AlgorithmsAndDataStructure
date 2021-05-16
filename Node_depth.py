@@ -3,7 +3,7 @@ import unittest
 def nodeDepths2(root, depth = 0):
     # handle base case
     if root is None:
-        return 0 
+        return 0 # why 0? because otherwise it will return NoneType and adding int + None gives a 
     # Recursive formula: f(n,d) = d + f(l, d+1) + f(r, d+1)
     # remember: we use use root.left and root.right but it will be recursively to root.left.left.[...]
     return depth + nodeDepths2(root.left, depth + 1) + nodeDepths2(root.right, depth + 1)
