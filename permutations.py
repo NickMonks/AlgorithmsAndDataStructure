@@ -39,6 +39,34 @@ def permutationsHelper(array, currentPermutation, permutations):
 				- 2nd call, i = 1: perm [1,3], newArray = [2] 
 				.....
 			'''
+def getPermutations2(array):
+    permutations = []
+    permutationsHelper(0, array, permutations)
+    return permutations
+
+def permutationsHelper2(i, array, permutations):
+    # Check if we are at the end of our array
+    # i is the index
+    if i == len(array) -1:
+        # Append array elements with the ":" operator
+        permutations.append(array[:])
+    else:
+        # swap all the numbers with the number of our current position
+        # for every index j in (i, end)
+        for j in range(i, len(array)):
+            # in this first iteration , j == i
+            # so the first time we wont swap anything... until last permutation appends!
+            # tthen after that snapshot (the 2nd swap wont be called neither), we change j
+            
+            # so j == i +1 
+            swap(i,j, array)
+            # we swap i->j and pass the array to the method
+            permutationsHelper(i+1, array, permutations)
+            # we un-swap the value of the iteration so the next permutation has a clean slate
+            swap(i, j, array)
+    
+def swap(i,j, array):
+    array[i], array[j] = array[j], array[i]
 
 class TestProgram(unittest.TestCase):
     def test_case_1(self):
