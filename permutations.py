@@ -41,7 +41,7 @@ def permutationsHelper(array, currentPermutation, permutations):
 			'''
 def getPermutations_2(array):
     permutations = []
-    permutationsHelper2(0, array, permutations)
+    permutationsHelper_2(0, array, permutations)
     return permutations
 
 def permutationsHelper_2(i, array, permutations):
