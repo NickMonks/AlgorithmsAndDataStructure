@@ -28,6 +28,7 @@ def solvePartialSudoku(row, col, board):
 	
 	# if it's not a 0, recursively call the function with next position
 	# we add the +1 because we want to move to the right
+ 	# length of row = 0...8 -> 9, last column: 8. if length == last column that means we're one colum out of bounds
 	return solvePartialSudoku(currentRow, currentCol + 1, board)
 
 def tryDigitsAtPosition(row, col, board):
