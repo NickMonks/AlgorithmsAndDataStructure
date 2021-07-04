@@ -46,7 +46,8 @@ def getMinSpaces(pi, numbersTable, cache, idx):
 			# We need to keep track of the minimum of these spaces. 
 			
 			# when we hit the base case, we will return -1, and -1 +1 = 0 -> zero spaces is the minimum of a prefix
-			# then recursion will keep returning the value
+			# then recursion will keep returning the value (if we return there's a chance that more prefix can be)
+			# after the current one. 
 			minSpaces = min(minSpaces, minSpacesInSuffix+1)
 	
 	cache[idx] = minSpaces
