@@ -32,6 +32,36 @@ def constructMinHeight(array, bst, startIdx, endIdx):
 	
 	return bst
 
+def constructMinHeight2(array, bst, startIdx, endIdx):
+    	
+	# if endIdx < startIdx we have reach our base case
+	if endIdx < startIdx:
+		return
+	# round it (doesnt matter which side we get, it wont affect height)
+	midIdx = (startIdx + endIdx)//2
+	valueToAdd = array[midIdx]
+	
+	# manually create the new bst
+	newBstNode = BST(array[midIdx])
+	if bst is None:
+		bst = newBstNode
+	else:
+		#insert to the left of right, depending of the BST condition
+		if array[midIdx] < bst.value:
+			bst.left = newBstNode
+			# we need to move to the left subtree (because we recursively call and 
+			# the node will be the root of that call), remember that we have several
+			# clls in the stack
+			bst = bst.left
+		else:
+			bst.right = newBstNode
+			bst = bst.right
+	
+	#recursively construct the bst sub-trees:
+	constructMinHeight(array, bst, startIdx, midIdx -1)
+	constructMinHeight(array, bst, midIdx + 1, endIdx)
+	
+	return bst
 
 
 class BST:
@@ -51,3 +81,21 @@ class BST:
                 self.right = BST(value)
             else:
                 self.right.insert(value)
+
+
+# ---- SIMPLIFICATION
+def constructMinHeight(array, startIdx, endIdx):
+    	
+	# if endIdx < startIdx we have reach our base case
+	if endIdx < startIdx:
+		return None
+	# round it (doesnt matter which side we get, it wont affect height)
+	midIdx = (startIdx + endIdx)//2
+	
+	bst = BST(array[midIdx])
+	#recursively construct the bst sub-trees. Then the recursive call will be equal to the left
+	# value of the root node, and the same for the right. This will call until finished
+	bst.left = constructMinHeight(array, startIdx, midIdx -1)
+	bst.right = constructMinHeight(array, midIdx + 1, endIdx)
+	
+	return bst
