@@ -27,6 +27,7 @@ def maximizeExpression1(array):
 	
 	return maximumValueFound
 
+# O(N) Time | O(N) Space   
 def maximizeExpression(array):
     
     if len(array) < 4:
